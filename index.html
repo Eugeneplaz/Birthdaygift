@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Birthday Surprise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <symbol id="rose" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="#6d0014"/>
+                <path d="M50 6 C76 6 95 28 93 52 C91 79 68 95 46 93 C21 91 5 70 7 46 C9 23 28 6 50 6Z" fill="#a8112a"/>
+                <path d="M50 18 C71 18 84 35 82 52 C80 71 63 84 46 82 C29 80 18 63 20 46 C22 30 35 18 50 18Z" fill="#c8173a"/>
+                <path d="M50 30 C64 30 72 41 70 52 C68 64 57 72 46 70 C35 68 29 58 31 48 C33 38 41 30 50 30Z" fill="#e32a4a"/>
+                <path d="M50 41 C58 41 62 47 60 53 C58 59 51 62 46 60 C41 58 40 51 43 46 C45 43 47 41 50 41Z" fill="#a8112a"/>
+                <path d="M50 8 C70 12 88 30 86 52 M14 40 C18 22 34 12 50 18 M24 74 C30 84 44 90 58 86 M76 76 C84 66 90 54 88 44 M36 56 C36 46 44 40 52 44 C58 48 56 56 50 56" fill="none" stroke="#6d0014" stroke-width="1.6" stroke-linecap="round"/>
+            </symbol>
+
+            <symbol id="flower" viewBox="0 0 140 140">
+                <g transform="translate(70 70) rotate(-35)">
+                    <path d="M0 0 C15 -26 52 -26 64 0 C52 26 15 26 0 0Z" fill="#17481f"/>
+                </g>
+                <g transform="translate(70 70) rotate(145)">
+                    <path d="M0 0 C15 -26 52 -26 64 0 C52 26 15 26 0 0Z" fill="#17481f"/>
+                </g>
+                <use href="#rose" x="20" y="20" width="100" height="100"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <svg class="deco tl" viewBox="0 0 140 140"><use href="#flower"/></svg>
+    <svg class="deco tr" viewBox="0 0 140 140"><use href="#flower"/></svg>
+    <svg class="deco bl" viewBox="0 0 140 140"><use href="#flower"/></svg>
+    <svg class="deco br" viewBox="0 0 140 140"><use href="#flower"/></svg>
+
+    <canvas id="petals"></canvas>
+
+    <audio id="music" src="Music.mp3" loop></audio>
+    <button id="musicBtn" onclick="toggleMusic()">Music: Off</button>
+
+    <div id="intro">
+        <p class="small">A letter for you</p>
+
+        <div class="envelope" id="envelope" onclick="openEnvelope()">
+            <div class="env-back"></div>
+            <div class="env-letter">
+                <div>
+                    <p class="to">A birthday surprise for</p>
+                    <p class="toname"><span class="name"></span></p>
+                </div>
+            </div>
+            <div class="env-front"></div>
+            <div class="env-flap"></div>
+            <svg class="seal" viewBox="0 0 100 100"><use href="#rose"/></svg>
+        </div>
+
+        <p class="tap">Tap the envelope to open</p>
+    </div>
+
+    <div id="app">
+        <main id="stage">
+
+            <section class="slide active">
+                <img class="cover" src="photo 1.png" alt="" onerror="this.style.display='none'">
+                <p class="small">A surprise for</p>
+                <h1><span class="name"></span></h1>
+                <p class="type">Today is your day, and I made something just for you.</p>
+            </section>
+
+            <section class="slide">
+                <p class="small">Today is your day</p>
+                <h1>Happy Birthday!</h1>
+                <div class="line"></div>
+                <p class="type">I hope this day is filled with smiles, laughter, and everyone who loves you. Let me show you a few things I wanted to say.</p>
+            </section>
+
+            <section class="slide">
+                <h1>My Gorgeous Babyy^^</h1>
+                <div id="gallery">
+                    <img id="photoView" alt="">
+                    <p id="photoCount"></p>
+                </div>
+            </section>
+
+            <section class="slide">
+                <p class="small">Make a wish</p>
+                <h1>Time For Cake</h1>
+                <div class="cake" id="cake">
+                    <div class="candles">
+                        <i class="candle"><b class="flame"></b></i>
+                        <i class="candle"><b class="flame"></b></i>
+                        <i class="candle"><b class="flame"></b></i>
+                    </div>
+                    <div class="tier t2"></div>
+                    <div class="tier t1"></div>
+                    <div class="plate"></div>
+                </div>
+                <p id="wishText">Close your eyes and make a wish.</p>
+                <button class="wishbtn" id="wishBtn" onclick="blowCandles()">Blow the Candles</button>
+            </section>
+
+            <section class="slide">
+                <h1>Why You Are Special</h1>
+                <div class="line"></div>
+                <div class="reasons">
+                    <p class="type reason">You have me!</p>
+                    <p class="type reason">You make ordinary days feel brighter.</p>
+                    <p class="type reason">You are someone I am truly grateful for.</p>
+                </div>
+            </section>
+
+            <section class="slide">
+                <h1>My Wishes For You</h1>
+                <div class="line"></div>
+                <div class="reasons">
+                    <p class="type wish-item">May you always be healthy and happy.</p>
+                    <p class="type wish-item">May all your dreams slowly come true.</p>
+                    <p class="type wish-item">May this new year bring you peace and success.</p>
+                </div>
+            </section>
+
+<section class="slide">
+                <h1>A Little Message</h1>
+                <div class="paper">
+                    <p class="type">Dear Mybabyy my lablab so much^^,</p>
+                    <p class="type">Thank you for being you. Thank you for every moment, every laugh, and every memory. I am lucky to have you in my life.</p>
+                    <p class="type sign">With all my love and care</p>
+                </div>
+            </section>
+
+            <section class="slide">
+                <svg class="bigrose" viewBox="0 0 140 140"><use href="#flower"/></svg>
+                <h1>Once Again</h1>
+                <h2>Happy Birthday, Babyy,<br><span class="name"></span>!</h2>
+                <div class="heart"></div>
+                <p>With all my love.</p>
+            </section>
+
+        </main>
+
+        <div id="dots"></div>
+        <div id="controls">
+            <button id="backBtn" onclick="prevSlide()">Back</button>
+            <button id="nextBtn" onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
